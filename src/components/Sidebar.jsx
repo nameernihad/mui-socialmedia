@@ -1,9 +1,11 @@
 import {
+  Brightness7,
   Drafts,
   Group,
   Home,
   Inbox,
   LocationCity,
+  NightsStay,
   Pages,
   People,
   Person,
@@ -22,7 +24,7 @@ import {
 import ModeNightIcon from "@mui/icons-material/ModeNight";
 import React from "react";
 
-function Sidebar() {
+function Sidebar({ setMode, mode }) {
   return (
     <Box flex={1} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
       <Box position="fixed">
@@ -86,9 +88,11 @@ function Sidebar() {
           <ListItem>
             <ListItemButton>
               <ListItemIcon>
-                <ModeNightIcon />
+                {mode === "light" ? <Brightness7 /> : <NightsStay />}
               </ListItemIcon>
-              <Switch />
+              <Switch
+                onChange={(e) => setMode(mode === "light" ? "dark" : "light")}
+              />
             </ListItemButton>
           </ListItem>
         </List>
